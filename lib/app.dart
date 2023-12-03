@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scanx/src/screens/login_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -14,7 +15,7 @@ class MyAppState extends State<MyApp> {
       title: "ScanX",
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: Home(),
+      home: const LoginScreen(),
     );
   }
 }
