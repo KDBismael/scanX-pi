@@ -1,0 +1,29 @@
+
+{
+    "patient_result":{
+        "id":1,
+        "patient_name": "patient1",
+        "npeumonia_type": "viral",
+        "patient_affected": true
+    },
+    "historical_result":[
+        {
+            "id":1,
+            "patient_name": "patient1",
+            "npeumonia_type": "viral",
+            "patient_affected": true
+        },
+        {
+            "id":3,
+            "patient_name": "patient3",
+            "npeumonia_type": "",
+            "patient_affected": false
+        },
+        {
+            "id":2,
+            "patient_name": "patient2",
+            "npeumonia_type": "bacterial",
+            "patient_affected": true
+        }
+    ]
+}
