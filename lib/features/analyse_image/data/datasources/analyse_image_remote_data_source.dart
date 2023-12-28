@@ -15,7 +15,7 @@ class AnalyseImageRemoteDataSourceImpl implements AnalyseImageRemoteDataSource {
   Future<AnalyseHistoryModel> getPatientsHistoric() async {
     final res =
         await rootBundle.loadString("assets/patient_result.json", cache: true);
-    final patientsResult = json.decode(res)['historical_result'];
+    final patientsResult = json.decode(res);
     return AnalyseHistoryModel.fromJsom(patientsResult);
   }
 

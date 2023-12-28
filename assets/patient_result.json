@@ -6,7 +6,7 @@
         "npeumonia_type": "viral",
         "patient_affected": true
     },
-    "historical_result":[
+    "patients_result":[
         {
             "id":1,
             "patient_name": "patient1",

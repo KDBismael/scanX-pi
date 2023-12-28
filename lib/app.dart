@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:scanx/src/screens/auth/login_screen.dart';
-import 'package:scanx/src/screens/main/home_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:scanx/features/analyse_image/domain/usecases/get_patients_historic.dart';
+import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
+import 'package:scanx/features/analyse_image/presentation/screens/home_screen.dart';
+import 'package:scanx/injections.dart';
+// import 'package:scanx/src/screens/auth/login_screen.dart';
+// import 'package:scanx/src/screens/main/home_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -16,7 +21,14 @@ class MyAppState extends State<MyApp> {
       title: "ScanX",
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: const HomeScreen(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (_) => getIt<AnalyseImageProvider>(),
+          ),
+        ],
+        child: const HomeScreen(),
+      ),
     );
   }
 }
