@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scanx/core/presentation/provider/global_provider.dart';
 import 'package:scanx/features/analyse_image/presentation/screens/analyse_historic_screen.dart';
+import 'package:scanx/features/analyse_image/presentation/screens/home_screen.dart';
 import 'package:scanx/features/auth/presentation/screens/profile_screen.dart';
-import 'package:scanx/src/screens/main/home_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});

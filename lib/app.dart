@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:scanx/core/presentation/provider/global_provider.dart';
 import 'package:scanx/core/presentation/screens/main_screen.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
-import 'package:scanx/features/analyse_image/presentation/screens/home_screen.dart';
 import 'package:scanx/injections.dart';
 // import 'package:scanx/src/screens/auth/login_screen.dart';
 // import 'package:scanx/src/screens/main/home_screen.dart';
