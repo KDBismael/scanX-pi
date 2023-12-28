@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:scanx/features/analyse_image/domain/usecases/get_patients_historic.dart';
+import 'package:scanx/core/presentation/provider/global_provider.dart';
+import 'package:scanx/core/presentation/screens/main_screen.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
 import 'package:scanx/features/analyse_image/presentation/screens/home_screen.dart';
 import 'package:scanx/injections.dart';
@@ -23,11 +24,12 @@ class MyAppState extends State<MyApp> {
       theme: appTheme,
       home: MultiProvider(
         providers: [
+          ChangeNotifierProvider(create: (_) => GlobalProvider()),
           ChangeNotifierProvider(
             create: (_) => getIt<AnalyseImageProvider>(),
           ),
         ],
-        child: const HomeScreen(),
+        child: const MainScreen(key: Key("mainScren")),
       ),
     );
   }
