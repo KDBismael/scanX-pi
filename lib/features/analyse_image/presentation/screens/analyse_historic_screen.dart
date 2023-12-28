@@ -16,7 +16,7 @@ class AnalyseHistoricScreen extends StatelessWidget {
             children: [
               SizedBox(height: screenSize.height * 0.025),
               const Text(
-                "Historique des resultats",
+                "Historique Des Resultats",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
