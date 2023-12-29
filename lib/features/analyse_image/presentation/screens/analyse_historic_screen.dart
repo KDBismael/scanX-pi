@@ -26,18 +26,19 @@ class AnalyseHistoricScreen extends StatelessWidget {
               ),
               SizedBox(height: screenSize.height * 0.03),
               Expanded(
-                  child: ListView.separated(
-                separatorBuilder: (context, index) => SizedBox(
-                  height: screenSize.height * 0.03,
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => SizedBox(
+                    height: screenSize.height * 0.03,
+                  ),
+                  itemCount: 10,
+                  itemBuilder: (context, index) {
+                    return Placeholder(
+                      fallbackHeight: 85,
+                      fallbackWidth: screenSize.width * 0.9,
+                    );
+                  },
                 ),
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Placeholder(
-                    fallbackHeight: 85,
-                    fallbackWidth: screenSize.width * 0.9,
-                  );
-                },
-              )),
+              ),
             ],
           ),
         ),

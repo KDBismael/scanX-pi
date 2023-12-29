@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scanx/core/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -182,6 +183,28 @@ class HomeScreen extends StatelessWidget {
                     elevation: 0.2,
                   ),
                   onPressed: () {
+                    CustomBottomSheet().sheet(
+                      context: context,
+                      padding: EdgeInsets.all(screenSize.width * 0.08),
+                      modalContent: Column(
+                        children: [
+                          Expanded(
+                            child: ListView.separated(
+                              separatorBuilder: (context, index) => SizedBox(
+                                height: screenSize.height * 0.03,
+                              ),
+                              itemCount: 10,
+                              itemBuilder: (context, index) {
+                                return Placeholder(
+                                  fallbackHeight: 85,
+                                  fallbackWidth: screenSize.width * 0.9,
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                     context
                         .read<AnalyseImageProvider>()
                         .eitherFailureOrHistoricResults();
@@ -248,6 +271,15 @@ class HomeScreen extends StatelessWidget {
                     elevation: 0.2,
                   ),
                   onPressed: () {
+                    CustomBottomSheet().sheet(
+                      context: context,
+                      padding: EdgeInsets.all(screenSize.width * 0.1),
+                      modalContent: const SizedBox(
+                        child: Center(
+                          child: Text('test'),
+                        ),
+                      ),
+                    );
                     context
                         .read<AnalyseImageProvider>()
                         .eitherFailureOrAnalyseResult();
