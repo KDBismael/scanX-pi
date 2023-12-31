@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scanx/core/presentation/widgets/custom_bottom_sheet.dart';
+import 'package:scanx/features/analyse_image/domain/entities/analyse_result_entity.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
+import 'package:scanx/features/analyse_image/presentation/widgets/analyse_result_card.dart';
 import 'package:scanx/features/analyse_image/presentation/widgets/patient_inputs.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -196,9 +198,13 @@ class HomeScreen extends StatelessWidget {
                               ),
                               itemCount: 10,
                               itemBuilder: (context, index) {
-                                return Placeholder(
-                                  fallbackHeight: 85,
-                                  fallbackWidth: screenSize.width * 0.9,
+                                return const AnalyseResultCard(
+                                  isElevated: true,
+                                  patientResult: AnalyseResultEntity(
+                                      id: 1,
+                                      npeumoniaType: "",
+                                      patientAffected: false,
+                                      patientName: "Konan Jupiter"),
                                 );
                               },
                             ),
@@ -218,13 +224,14 @@ class HomeScreen extends StatelessWidget {
                             border: Border.all(
                               color: Theme.of(context).colorScheme.tertiary,
                             )),
-                        padding: const EdgeInsets.all(9.88),
                         width: screenSize.width * 0.2,
                         height: screenSize.height * 0.1,
-                        child: Icon(
-                          Icons.assignment_turned_in_outlined,
-                          color: Theme.of(context).colorScheme.primary,
-                          size: 34,
+                        child: Center(
+                          child: Icon(
+                            Icons.assignment_turned_in_outlined,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 34,
+                          ),
                         ),
                       ),
                       SizedBox(width: screenSize.width * 0.03),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:scanx/features/analyse_image/domain/entities/analyse_result_entity.dart';
+import 'package:scanx/features/analyse_image/presentation/widgets/analyse_result_card.dart';
 
 class AnalyseHistoricScreen extends StatelessWidget {
   const AnalyseHistoricScreen({super.key});
@@ -32,9 +34,12 @@ class AnalyseHistoricScreen extends StatelessWidget {
                   ),
                   itemCount: 10,
                   itemBuilder: (context, index) {
-                    return Placeholder(
-                      fallbackHeight: 85,
-                      fallbackWidth: screenSize.width * 0.9,
+                    return const AnalyseResultCard(
+                      patientResult: AnalyseResultEntity(
+                          id: 1,
+                          npeumoniaType: "viral",
+                          patientAffected: true,
+                          patientName: "Konan Mars"),
                     );
                   },
                 ),
