@@ -10,7 +10,7 @@ class CustomBottomSheet {
     return showModalBottomSheet<void>(
         context: context,
         isScrollControlled: true,
-        constraints: BoxConstraints.expand(height: size.height * 0.9),
+        constraints: BoxConstraints.expand(height: size.height * 0.78),
         backgroundColor: Theme.of(context).colorScheme.secondary,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
