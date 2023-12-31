@@ -39,6 +39,10 @@ dependencies:
   shared_preferences: ^2.2.2
   get_it: ^7.6.4
   provider: ^6.1.1
+  datepicker_dropdown: ^0.0.9
+  camera: ^0.10.5+7
+  path_provider: ^2.1.1
+  path: ^1.8.3
 
 dev_dependencies:
   flutter_test:

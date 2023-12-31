@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:scanx/core/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
+import 'package:scanx/features/analyse_image/presentation/widgets/patient_inputs.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -273,12 +274,8 @@ class HomeScreen extends StatelessWidget {
                   onPressed: () {
                     CustomBottomSheet().sheet(
                       context: context,
-                      padding: EdgeInsets.all(screenSize.width * 0.1),
-                      modalContent: const SizedBox(
-                        child: Center(
-                          child: Text('test'),
-                        ),
-                      ),
+                      padding: EdgeInsets.all(screenSize.width * 0.06),
+                      modalContent: const PatientInputs(),
                     );
                     context
                         .read<AnalyseImageProvider>()
