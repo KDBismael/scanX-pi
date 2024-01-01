@@ -26,7 +26,7 @@ class AnalyseHistoricScreen extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
-              SizedBox(height: screenSize.height * 0.03),
+              SizedBox(height: screenSize.height * 0.02),
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, index) => SizedBox(
