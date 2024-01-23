@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gal/gal.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CameraPreviewScreen extends StatefulWidget {
@@ -44,6 +45,7 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
 
   @override
   void dispose() {
+    print(capturedPicture);
     // Dispose of the controller when the widget is disposed.
     _controller.dispose();
     super.dispose();
@@ -221,9 +223,16 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                               Expanded(
                                   child: capturedPicture != null
                                       ? GestureDetector(
-                                          onTap: () {
-                                            _picker.pickImage(
-                                                source: ImageSource.gallery);
+                                          onTap: () async {
+                                            final image =
+                                                await _picker.pickImage(
+                                                    source:
+                                                        ImageSource.gallery);
+                                            setState(() {
+                                              if (image != null) {
+                                                capturedPicture = image;
+                                              }
+                                            });
                                           },
                                           child: Container(
                                             clipBehavior: Clip.antiAlias,
@@ -239,35 +248,38 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                                         )
                                       : Container()),
                               Expanded(
-                                  child: IconButton(
-                                onPressed: () async {
-                                  XFile picture =
-                                      await _controller.takePicture();
-                                  setState(() {
-                                    capturedPicture = picture;
-                                  });
-                                },
-                                iconSize: screenSize.height * 0.09,
-                                padding: EdgeInsets.zero,
-                                constraints: const BoxConstraints(),
-                                icon: const Icon(Icons.circle,
-                                    color: Colors.white),
-                              )),
+                                child: IconButton(
+                                  onPressed: () async {
+                                    XFile picture =
+                                        await _controller.takePicture();
+                                    setState(() {
+                                      capturedPicture = picture;
+                                    });
+                                    await Gal.putImage(picture.path);
+                                  },
+                                  iconSize: screenSize.height * 0.09,
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                  icon: const Icon(Icons.circle,
+                                      color: Colors.white),
+                                ),
+                              ),
                               Expanded(
-                                  child: IconButton(
-                                padding: EdgeInsets.zero,
-                                iconSize: screenSize.height * 0.04,
-                                icon: Icon(
-                                    _isRearCameraSelected
-                                        ? CupertinoIcons.switch_camera
-                                        : CupertinoIcons.switch_camera_solid,
-                                    color: Colors.white),
-                                onPressed: () {
-                                  setState(() => _isRearCameraSelected =
-                                      !_isRearCameraSelected);
-                                  initCamera(widget.cameras);
-                                },
-                              )),
+                                child: IconButton(
+                                  padding: EdgeInsets.zero,
+                                  iconSize: screenSize.height * 0.04,
+                                  icon: Icon(
+                                      _isRearCameraSelected
+                                          ? CupertinoIcons.switch_camera
+                                          : CupertinoIcons.switch_camera_solid,
+                                      color: Colors.white),
+                                  onPressed: () {
+                                    setState(() => _isRearCameraSelected =
+                                        !_isRearCameraSelected);
+                                    initCamera(widget.cameras);
+                                  },
+                                ),
+                              ),
                             ]),
                       ],
                     ),

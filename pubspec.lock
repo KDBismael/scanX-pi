@@ -208,6 +208,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  gal:
+    dependency: "direct main"
+    description:
+      name: gal
+      sha256: "03ee7c9fa0e1b713d042ba4a2878b050fa381aef3f6ef83089f5dbb70db4dd37"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.2"
   get_it:
     dependency: "direct main"
     description:
