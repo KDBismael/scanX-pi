@@ -236,14 +236,7 @@ class _PatientInputsState extends State<PatientInputs> {
                     ),
                   ),
                   onPressed: () {
-                    availableCameras().then((value) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => CameraPreviewScreen(cameras: value),
-                        ),
-                      );
-                    });
+                    print("analyse");
                   },
                   child: const Text(
                     "Analyser",
