@@ -1,4 +1,3 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,7 +8,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    List<XFile>? _mediaFileList;
+    List<XFile>? mediaFileList;
     final picker = ImagePicker();
 
     return Scaffold(
@@ -34,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: screenSize.height * 0.02),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Container(
+                  child: SizedBox(
                     width: screenSize.width,
                     // height: screenSize.height,
                     child: Column(

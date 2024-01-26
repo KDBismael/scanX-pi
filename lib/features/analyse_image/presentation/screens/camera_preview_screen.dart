@@ -78,7 +78,7 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
               return Column(children: [
                 Container(
                   height: 50,
-                  decoration: BoxDecoration(color: Colors.black),
+                  decoration: const BoxDecoration(color: Colors.black),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -89,8 +89,8 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                             toggleCameraFlash();
                           },
                           child: !isFlashOn
-                              ? Icon(Icons.flash_off, color: Colors.white)
-                              : Icon(Icons.flash_on, color: Colors.white),
+                              ? const Icon(Icons.flash_off, color: Colors.white)
+                              : const Icon(Icons.flash_on, color: Colors.white),
                         ),
                       ),
                       Padding(
@@ -107,7 +107,7 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                                 child: Center(
                                   child: Text(
                                     "0,5${zoomLevel == 1 ? 'X' : ''}",
-                                    style: TextStyle(fontSize: 10),
+                                    style: const TextStyle(fontSize: 10),
                                   ),
                                 ),
                               ),
@@ -129,7 +129,7 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                               child: Center(
                                 child: Text(
                                   "1${zoomLevel == 1.5 ? 'X' : ''}",
-                                  style: TextStyle(fontSize: 10),
+                                  style: const TextStyle(fontSize: 10),
                                 ),
                               ),
                             ),
@@ -152,7 +152,7 @@ class _CameraPreviewScreenState extends State<CameraPreviewScreen> {
                               child: Center(
                                 child: Text(
                                   "2${zoomLevel == 2 ? 'X' : ''}",
-                                  style: TextStyle(fontSize: 10),
+                                  style: const TextStyle(fontSize: 10),
                                 ),
                               ),
                             ),

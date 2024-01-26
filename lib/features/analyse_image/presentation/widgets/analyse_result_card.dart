@@ -68,12 +68,12 @@ class AnalyseResultCard extends StatelessWidget {
             width: 40,
             height: 40,
             child: OutlinedButton(
+              onPressed: () {},
+              style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
               child: const Icon(
                 Icons.share,
                 size: 20,
               ),
-              onPressed: () {},
-              style: OutlinedButton.styleFrom(padding: EdgeInsets.all(0)),
             ),
           )
         ],

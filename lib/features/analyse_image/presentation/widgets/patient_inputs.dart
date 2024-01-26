@@ -186,7 +186,7 @@ class _PatientInputsState extends State<PatientInputs> {
                   // optional
                   showDay: true, // optional
                   dayFlex: 2, // optional
-                  hintTextStyle: TextStyle(color: Colors.grey), // optional
+                  hintTextStyle: const TextStyle(color: Colors.grey), // optional
                 ),
                 SizedBox(height: screenSize.height * 0.02),
                 ElevatedButton(
