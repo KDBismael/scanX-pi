@@ -28,7 +28,7 @@ class _PatientInputsState extends State<PatientInputs> {
           const Text(
             "Entrez les informations du Patient",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.black),
           ),
           SizedBox(height: screenSize.height * 0.02),
           Form(
@@ -44,7 +44,7 @@ class _PatientInputsState extends State<PatientInputs> {
                         const WidgetSpan(
                           child: Text(
                             'Nom',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                         ),
                         WidgetSpan(
@@ -87,7 +87,7 @@ class _PatientInputsState extends State<PatientInputs> {
                         const WidgetSpan(
                           child: Text(
                             'Prenom',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                         ),
                         WidgetSpan(
@@ -130,7 +130,7 @@ class _PatientInputsState extends State<PatientInputs> {
                         const WidgetSpan(
                           child: Text(
                             'Date De Naissance',
-                            style: TextStyle(fontSize: 18),
+                            style: TextStyle(fontSize: 18, color: Colors.black),
                           ),
                         ),
                         WidgetSpan(
@@ -186,7 +186,8 @@ class _PatientInputsState extends State<PatientInputs> {
                   // optional
                   showDay: true, // optional
                   dayFlex: 2, // optional
-                  hintTextStyle: const TextStyle(color: Colors.grey), // optional
+                  hintTextStyle:
+                      const TextStyle(color: Colors.grey), // optional
                 ),
                 SizedBox(height: screenSize.height * 0.02),
                 ElevatedButton(

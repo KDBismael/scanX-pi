@@ -14,6 +14,7 @@ class AnalyseHistoricScreen extends StatelessWidget {
         child: Container(
           width: screenSize.width,
           padding: const EdgeInsets.symmetric(horizontal: 20),
+          decoration: const BoxDecoration(color: Colors.white),
           child: Column(
             children: [
               SizedBox(height: screenSize.height * 0.025),
@@ -22,6 +23,7 @@ class AnalyseHistoricScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
+                  color: Colors.black,
                   fontWeight: FontWeight.w600,
                   overflow: TextOverflow.ellipsis,
                 ),

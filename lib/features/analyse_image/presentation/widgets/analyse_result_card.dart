@@ -48,7 +48,7 @@ class AnalyseResultCard extends StatelessWidget {
               children: [
                 Text(
                   patientResult.patientName,
-                  style: const TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20, color: Colors.black),
                 ),
                 patientResult.patientAffected
                     ? Text(
