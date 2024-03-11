@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    print(context.watch<AnalyseImageProvider>().state);
+    // print(context.watch<AnalyseImageProvider>().state);
 
     return Scaffold(
       body: SafeArea(
@@ -52,6 +52,7 @@ class HomeScreen extends StatelessWidget {
                               // Serge
                               style: TextStyle(
                                 fontSize: 20,
+                                color: Colors.black,
                                 fontWeight: FontWeight.w600,
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -59,6 +60,7 @@ class HomeScreen extends StatelessWidget {
                             Text(
                               "Radiologue",
                               style: TextStyle(
+                                color: Colors.black,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w400,
                               ),
@@ -179,7 +181,7 @@ class HomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     padding: const EdgeInsets.all(16.88),
-                    fixedSize: Size(screenSize.width, screenSize.height * 0.12),
+                    fixedSize: Size(screenSize.width, screenSize.height * 0.15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -220,10 +222,11 @@ class HomeScreen extends StatelessWidget {
                     children: [
                       Container(
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: Theme.of(context).colorScheme.tertiary,
-                            )),
+                          borderRadius: BorderRadius.circular(15),
+                          border: Border.all(
+                            color: Theme.of(context).colorScheme.tertiary,
+                          ),
+                        ),
                         width: screenSize.width * 0.2,
                         height: screenSize.height * 0.1,
                         child: Center(
@@ -235,34 +238,29 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: screenSize.width * 0.03),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Resultats d'analyse",
-                            style: TextStyle(
-                              fontSize: 23.83,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Resultats d'analyse",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.05,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Voir les resultats des analyses",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
+                            Text(
+                              "Voir les resultats des analyses d'aujourd'hui.",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.033,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black,
+                              ),
+                              maxLines: 2,
                             ),
-                          ),
-                          Text(
-                            "d'aujourd'hui.",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -272,7 +270,7 @@ class HomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     padding: const EdgeInsets.all(16.88),
-                    fixedSize: Size(screenSize.width, screenSize.height * 0.12),
+                    fixedSize: Size(screenSize.width, screenSize.height * 0.15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -306,34 +304,28 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: screenSize.width * 0.03),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Analyser un patient",
-                            style: TextStyle(
-                              fontSize: 23.83,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Analyser un patient",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.05,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Utilisez la puissance de l'IA",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
+                            Text(
+                              "Utilisez la puissance de l'IA pour vos analyse.",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.033,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "pour vos analyse.",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       )
                     ],
                   ),
@@ -343,7 +335,7 @@ class HomeScreen extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.secondary,
                     padding: const EdgeInsets.all(16.88),
-                    fixedSize: Size(screenSize.width, screenSize.height * 0.12),
+                    fixedSize: Size(screenSize.width, screenSize.height * 0.15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -368,34 +360,29 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: screenSize.width * 0.03),
-                      const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Partager Resultats",
-                            style: TextStyle(
-                              fontSize: 23.83,
-                              fontWeight: FontWeight.w800,
-                              color: Colors.black,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Partager Resultats",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.05,
+                                fontWeight: FontWeight.w800,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "Envoyez les données de vos",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
+                            Text(
+                              "Envoyez les données de vos patients à d'autres medecin.",
+                              style: TextStyle(
+                                fontSize: screenSize.width * 0.033,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black,
+                              ),
+                              maxLines: 2,
                             ),
-                          ),
-                          Text(
-                            "patients à d'autres medecin.",
-                            style: TextStyle(
-                              fontSize: 14.83,
-                              fontWeight: FontWeight.w300,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       )
                     ],
                   ),
