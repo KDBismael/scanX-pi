@@ -31,17 +31,17 @@ class ProfileScreen extends StatelessWidget {
                 "Mon Profile",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w600,
-                  overflow: TextOverflow.ellipsis,
-                ),
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    overflow: TextOverflow.ellipsis,
+                    color: Colors.black),
               ),
               SizedBox(height: screenSize.height * 0.02),
               Expanded(
                 child: SingleChildScrollView(
                   child: SizedBox(
                     width: screenSize.width,
-                    height: screenSize.height * 0.827,
+                    // height: screenSize.height * 0.9,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
@@ -72,7 +72,8 @@ class ProfileScreen extends StatelessWidget {
                                 style: ElevatedButton.styleFrom(
                                   fixedSize: const Size(20, 20),
                                   elevation: 0,
-                                  foregroundColor: Colors.white,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.primary,
                                   shape: const CircleBorder(),
                                 ),
                                 // child: Text("h"),
@@ -82,6 +83,7 @@ class ProfileScreen extends StatelessWidget {
                                     fontFamily: CupertinoIcons.iconFont,
                                     fontPackage: CupertinoIcons.iconFontPackage,
                                   ),
+                                  color: Colors.white,
                                 ),
                               ),
                             )
@@ -91,13 +93,17 @@ class ProfileScreen extends StatelessWidget {
                         const Text(
                           "Gnaore Kouame",
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w700),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black),
                         ),
                         SizedBox(height: screenSize.height * 0.001),
                         const Text(
                           "@gnaorekouame",
                           style: TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w300),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: Colors.black),
                         ),
                         SizedBox(height: screenSize.height * 0.04),
                         Form(
@@ -126,7 +132,8 @@ class ProfileScreen extends StatelessWidget {
                               TextFormField(
                                 initialValue: "Gnaore Kouame",
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -168,7 +175,8 @@ class ProfileScreen extends StatelessWidget {
                               TextFormField(
                                 initialValue: "gnaore.kouame1@gmail.com",
                                 style: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                                 decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -210,7 +218,8 @@ class ProfileScreen extends StatelessWidget {
                               DropdownDatePicker(
                                 locale: "fr_FR",
                                 textStyle: const TextStyle(
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
                                 inputDecoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -257,19 +266,22 @@ class ProfileScreen extends StatelessWidget {
                             ],
                           ),
                         ),
-                        Expanded(
-                            child: Center(
+                        SizedBox(height: screenSize.height * 0.057),
+                        Center(
                           child: OutlinedButton(
                               onPressed: () {},
                               style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6)),
                                 fixedSize: Size(screenSize.width, 50),
                                 side: BorderSide(color: Colors.red),
                               ),
-                              child: Text(
+                              child: const Text(
                                 "Se connecter",
                                 style: TextStyle(color: Colors.red),
                               )),
-                        ))
+                        ),
+                        SizedBox(height: screenSize.height * 0.02),
                       ],
                     ),
                   ),
