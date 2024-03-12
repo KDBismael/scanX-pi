@@ -12,7 +12,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<dynamic> signin(SigninEntity credentials) async {
-    final res = await req.post(credentials);
+    final res = await req.post("auth/signin", {
+      'user': {
+        "email": credentials.email,
+        "password": credentials.password,
+      }
+    });
     print(res);
     return "your are in";
   }
