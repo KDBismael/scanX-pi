@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:scanx/features/analyse_image/domain/entities/patient_image_entity.dart';
 
 class PatientEntity extends Equatable {
@@ -12,7 +13,7 @@ class PatientEntity extends Equatable {
   final String firstName;
   final String lastName;
   final int age;
-  final PatientImageEntity images;
+  final XFile images;
 
   @override
   List<Object> get props => <Object>[firstName, lastName, age, images];

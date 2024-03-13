@@ -18,4 +18,19 @@ class NetworkRequest {
       rethrow;
     }
   }
+
+  Future<String> analyse(
+    String path,
+  ) async {
+    dio.options.contentType = "multipart/form-data";
+    var formData = FormData.fromMap({
+      'firstName': 'kdb',
+      'lastName': "ismael",
+      'birthDate': "date",
+      'image':
+          await MultipartFile.fromFile('./text.txt', filename: 'upload.txt')
+    });
+    // final response=await
+    return "";
+  }
 }

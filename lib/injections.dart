@@ -42,7 +42,7 @@ Future<void> injectDependency() async {
     () => AnalyseImageLocalDataSourceImpl(sharedPreferences: getIt()),
   );
   getIt.registerLazySingleton<AnalyseImageRemoteDataSource>(
-    () => AnalyseImageRemoteDataSourceImpl(),
+    () => AnalyseImageRemoteDataSourceImpl(network: NetworkRequest()),
   );
   getIt.registerLazySingleton<AuthRemoteDataSource>(
     () => AuthRemoteDataSourceImpl(req: NetworkRequest()),

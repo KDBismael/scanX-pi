@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_history_entity.dart';
@@ -19,14 +20,12 @@ class AnalyseImageProvider with ChangeNotifier {
     notifyListeners();
 
     final result = await sendImage(
-      const PatientEntity(
-        firstName: "patien1",
-        lastName: "patient",
-        age: 67,
-        images: PatientImageEntity(
-          images: ['ttt', 'tt'],
-        ),
-      ),
+      PatientEntity(
+          firstName: "patien1", lastName: "patient", age: 67, images: XFile("")
+          // images: PatientImageEntity(
+          //   images: ['ttt', 'tt'],
+          // ),
+          ),
     );
     result.fold((failure) {
       state = Error(message: failure.message);

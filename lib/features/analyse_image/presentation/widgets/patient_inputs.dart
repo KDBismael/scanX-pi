@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:scanx/features/analyse_image/presentation/screens/camera_preview_screen.dart';
 
 class PatientInputs extends StatefulWidget {
@@ -14,6 +15,7 @@ class PatientInputs extends StatefulWidget {
 
 class _PatientInputsState extends State<PatientInputs> {
   DateTime dateNow = DateTime.now();
+  final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -198,15 +200,20 @@ class _PatientInputsState extends State<PatientInputs> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {
-                    availableCameras().then((value) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => CameraPreviewScreen(cameras: value),
-                        ),
-                      );
-                    });
+                  onPressed: () async {
+                    final pickedFile =
+                        await picker.pickImage(source: ImageSource.gallery);
+
+                    // await picker.pickImage(source: ImageSource.camera);
+                    print(pickedFile);
+                    // availableCameras().then((value) {
+                    //   Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (_) => CameraPreviewScreen(cameras: value),
+                    //     ),
+                    //   );
+                    // });
                   },
                   child: const Text(
                     "Prendre une photo",
