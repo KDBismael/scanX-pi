@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:scanx/features/auth/presentation/provider/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,6 +13,8 @@ class LoginScreen extends StatefulWidget {
 
 class LoginScreenState extends State<LoginScreen> {
   static GlobalKey formKey = GlobalKey<FormState>();
+  String email = '';
+  String password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +69,13 @@ class LoginScreenState extends State<LoginScreen> {
                         child: Column(
                           children: [
                             TextFormField(
-                              key: const Key("PhoneNumber"),
+                              key: const Key("Email"),
+                              style: const TextStyle(color: Colors.black),
+                              onChanged: (value) {
+                                setState(() {
+                                  email = value;
+                                });
+                              },
                               decoration: InputDecoration(
                                 hintText: "Numero de telephone",
                                 enabledBorder: OutlineInputBorder(
@@ -88,8 +98,14 @@ class LoginScreenState extends State<LoginScreen> {
                               height: screenSize.height * 0.03,
                             ),
                             TextFormField(
+                              style: const TextStyle(color: Colors.black),
                               key: const Key("Password"),
                               obscureText: true,
+                              onChanged: (value) {
+                                setState(() {
+                                  password = value;
+                                });
+                              },
                               decoration: InputDecoration(
                                 hintText: "Mot de passe",
                                 enabledBorder: OutlineInputBorder(
@@ -112,7 +128,10 @@ class LoginScreenState extends State<LoginScreen> {
                               height: screenSize.height * 0.03,
                             ),
                             ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<AuthProvider>().signInOrFailure(
+                                    context: context, "me@g.com", "string");
+                              },
                               style: ButtonStyle(
                                 shape: const MaterialStatePropertyAll(
                                   RoundedRectangleBorder(

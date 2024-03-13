@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:scanx/core/utils/network/network.dart';
 import 'package:scanx/features/auth/domain/entities/signin_entity.dart';
 
@@ -18,7 +20,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         "password": credentials.password,
       }
     });
-    print(res);
-    return "your are in";
+    return res.data;
   }
 }
