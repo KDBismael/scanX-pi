@@ -30,6 +30,8 @@ class _PatientInputsState extends State<PatientInputs> {
     int selectedDay = dateNow.day;
     int selectedMonth = dateNow.month;
     int selectedYear = dateNow.year;
+    AnalyseImageState analyseState =
+        context.watch<AnalyseImageProvider>().state;
 
     return SingleChildScrollView(
       child: Column(
@@ -220,23 +222,15 @@ class _PatientInputsState extends State<PatientInputs> {
                     ),
                   ),
                   onPressed: () async {
-                    // context
-                    //       .read<AnalyseImageProvider>()
-                    //       .eitherFailureOrAnalyseResult();
-                    // final pickedFile = await
                     picker.pickImage(source: ImageSource.gallery).then((value) {
                       if (value != null) {
                         setState(() {
                           image = value;
                         });
-                        // context
-                        //     .read<AnalyseImageProvider>()
-                        //     .eitherFailureOrAnalyseResult(value);
                       }
                     });
 
                     // await picker.pickImage(source: ImageSource.camera);
-                    // print(pickedFile);
 
                     // availableCameras().then((value) {
                     //   Navigator.push(
