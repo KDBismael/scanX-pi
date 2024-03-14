@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scanx/core/presentation/provider/global_provider.dart';
 import 'package:scanx/core/presentation/widgets/custom_bottom_sheet.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_result_entity.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
@@ -206,7 +207,7 @@ class HomeScreen extends StatelessWidget {
                                   return const AnalyseResultCard(
                                     isElevated: true,
                                     patientResult: AnalyseResultEntity(
-                                        id: 1,
+                                        id: "1",
                                         npeumoniaType: "",
                                         patientAffected: false,
                                         patientName: "Konan Jupiter"),
@@ -282,14 +283,13 @@ class HomeScreen extends StatelessWidget {
                       elevation: 0.2,
                     ),
                     onPressed: () {
+                      print(
+                          context.read<GlobalProvider>().bottonNavigatorIndex);
                       CustomBottomSheet().sheet(
                         context: context,
                         padding: EdgeInsets.all(screenSize.width * 0.06),
                         modalContent: const PatientInputs(),
                       );
-                      context
-                          .read<AnalyseImageProvider>()
-                          .eitherFailureOrAnalyseResult();
                     },
                     child: Row(
                       children: [

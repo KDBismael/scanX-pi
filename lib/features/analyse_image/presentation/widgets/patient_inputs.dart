@@ -2,6 +2,10 @@ import 'package:camera/camera.dart';
 import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:scanx/core/presentation/provider/global_provider.dart';
+import 'package:scanx/features/analyse_image/domain/entities/patient_entity.dart';
+import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
 import 'package:scanx/features/analyse_image/presentation/screens/camera_preview_screen.dart';
 
 class PatientInputs extends StatefulWidget {
@@ -16,6 +20,9 @@ class PatientInputs extends StatefulWidget {
 class _PatientInputsState extends State<PatientInputs> {
   DateTime dateNow = DateTime.now();
   final picker = ImagePicker();
+  String firstName = "";
+  String lastName = "";
+  XFile? image;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +70,7 @@ class _PatientInputsState extends State<PatientInputs> {
                   ),
                 ),
                 TextFormField(
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -78,6 +86,11 @@ class _PatientInputsState extends State<PatientInputs> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      firstName = value;
+                    });
+                  },
                 ),
                 SizedBox(height: screenSize.height * 0.02),
                 Padding(
@@ -106,6 +119,7 @@ class _PatientInputsState extends State<PatientInputs> {
                   ),
                 ),
                 TextFormField(
+                  style: const TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -121,6 +135,11 @@ class _PatientInputsState extends State<PatientInputs> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                   ),
+                  onChanged: (value) {
+                    setState(() {
+                      lastName = value;
+                    });
+                  },
                 ),
                 SizedBox(height: screenSize.height * 0.02),
                 Padding(
@@ -201,11 +220,24 @@ class _PatientInputsState extends State<PatientInputs> {
                     ),
                   ),
                   onPressed: () async {
-                    final pickedFile =
-                        await picker.pickImage(source: ImageSource.gallery);
+                    // context
+                    //       .read<AnalyseImageProvider>()
+                    //       .eitherFailureOrAnalyseResult();
+                    // final pickedFile = await
+                    picker.pickImage(source: ImageSource.gallery).then((value) {
+                      if (value != null) {
+                        setState(() {
+                          image = value;
+                        });
+                        // context
+                        //     .read<AnalyseImageProvider>()
+                        //     .eitherFailureOrAnalyseResult(value);
+                      }
+                    });
 
                     // await picker.pickImage(source: ImageSource.camera);
-                    print(pickedFile);
+                    // print(pickedFile);
+
                     // availableCameras().then((value) {
                     //   Navigator.push(
                     //     context,
@@ -244,7 +276,18 @@ class _PatientInputsState extends State<PatientInputs> {
                     ),
                   ),
                   onPressed: () {
-                    print("analyse");
+                    context
+                        .read<AnalyseImageProvider>()
+                        .eitherFailureOrAnalyseResult(
+                          patient: PatientEntity(
+                            firstName: firstName,
+                            lastName: lastName,
+                            birthDate:
+                                "$selectedDay-$selectedMonth-$selectedYear",
+                            image: image!,
+                          ),
+                        );
+                    // print();
                   },
                   child: const Text(
                     "Analyser",

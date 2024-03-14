@@ -27,10 +27,11 @@ class AnalyseImageRemoteDataSourceImpl implements AnalyseImageRemoteDataSource {
   @override
   Future<AnalyseResultModel> sendPatientImageToAnalyse(
       PatientEntity patient) async {
-    final res =
-        await rootBundle.loadString("assets/patient_result.json", cache: true);
+    final patientResult = await network.analyse("predictions/predict", patient);
+    // final res =
+    //     await rootBundle.loadString("assets/patient_result.json", cache: true);
 
-    final patientResult = json.decode(res)['patient_result'];
+    // final patientResult = json.decode(res)['patient_result'];
 
     return AnalyseResultModel.fromJsom(patientResult);
   }

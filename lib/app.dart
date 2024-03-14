@@ -28,21 +28,21 @@ class MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "ScanX",
-      debugShowCheckedModeBanner: false,
-      theme: appTheme,
-      home: MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => getIt<GlobalProvider>()),
-          ChangeNotifierProvider(
-            create: (_) => getIt<AnalyseImageProvider>(),
-          ),
-          ChangeNotifierProvider(
-            create: (_) => getIt<AuthProvider>(),
-          ),
-        ],
-        child: FutureBuilder(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => getIt<GlobalProvider>()),
+        ChangeNotifierProvider(
+          create: (_) => getIt<AnalyseImageProvider>(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => getIt<AuthProvider>(),
+        ),
+      ],
+      child: MaterialApp(
+        title: "ScanX",
+        debugShowCheckedModeBanner: false,
+        theme: appTheme,
+        home: FutureBuilder(
           future: jwtOrEmpty,
           builder: (context, snapshot) {
             if (!snapshot.hasData) return const CircularProgressIndicator();

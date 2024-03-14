@@ -1,6 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_history_entity.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_result_entity.dart';
 import 'package:scanx/features/analyse_image/domain/entities/patient_entity.dart';
@@ -12,25 +13,20 @@ class AnalyseImageProvider with ChangeNotifier {
   AnalyseImageState state = Empty();
   final GetPatientsHistoric getHistoric;
   final SendPatientImageToAnalyse sendImage;
+  final picker = ImagePicker();
 
   AnalyseImageProvider({required this.getHistoric, required this.sendImage});
 
-  void eitherFailureOrAnalyseResult() async {
+  void eitherFailureOrAnalyseResult({required PatientEntity patient}) async {
     state = Loading();
     notifyListeners();
-
-    final result = await sendImage(
-      PatientEntity(
-          firstName: "patien1", lastName: "patient", age: 67, images: XFile("")
-          // images: PatientImageEntity(
-          //   images: ['ttt', 'tt'],
-          // ),
-          ),
-    );
+    // final image = await picker.pickImage(source: ImageSource.gallery);
+    final result = await sendImage(patient);
     result.fold((failure) {
       state = Error(message: failure.message);
       notifyListeners();
     }, (analyseResult) {
+      print(analyseResult);
       state = PatientResult(patientResult: analyseResult);
       notifyListeners();
     });
