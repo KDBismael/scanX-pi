@@ -45,6 +45,7 @@ class MyAppState extends State<MyApp> {
         home: FutureBuilder(
           future: jwtOrEmpty,
           builder: (context, snapshot) {
+            // return const MainScreen(key: Key("mainScren"));
             if (!snapshot.hasData) return const CircularProgressIndicator();
             if (snapshot.data != "") {
               var str = snapshot.data;

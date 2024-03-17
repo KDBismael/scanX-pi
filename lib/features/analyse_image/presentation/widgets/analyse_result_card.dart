@@ -3,9 +3,13 @@ import 'package:scanx/features/analyse_image/domain/entities/analyse_result_enti
 
 class AnalyseResultCard extends StatelessWidget {
   const AnalyseResultCard(
-      {super.key, required this.patientResult, this.isElevated = false});
+      {super.key,
+      required this.patientResult,
+      this.isElevated = false,
+      required this.notshare});
   final AnalyseResultEntity patientResult;
   final bool isElevated;
+  final bool notshare;
 
   @override
   Widget build(BuildContext context) {
@@ -63,19 +67,21 @@ class AnalyseResultCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: screenSize.width * 0.04),
-          SizedBox(
-            width: 40,
-            height: 40,
-            child: OutlinedButton(
-              onPressed: () {},
-              style: OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
-              child: const Icon(
-                Icons.share,
-                size: 20,
+          if (!notshare) SizedBox(width: screenSize.width * 0.04),
+          if (!notshare)
+            SizedBox(
+              width: 40,
+              height: 40,
+              child: OutlinedButton(
+                onPressed: () {},
+                style:
+                    OutlinedButton.styleFrom(padding: const EdgeInsets.all(0)),
+                child: const Icon(
+                  Icons.share,
+                  size: 20,
+                ),
               ),
-            ),
-          )
+            )
         ],
       ),
     );

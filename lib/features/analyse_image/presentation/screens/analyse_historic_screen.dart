@@ -37,6 +37,7 @@ class AnalyseHistoricScreen extends StatelessWidget {
                   itemCount: 10,
                   itemBuilder: (context, index) {
                     return const AnalyseResultCard(
+                      notshare: false,
                       patientResult: AnalyseResultEntity(
                           id: "1",
                           npeumoniaType: "viral",

@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_history_entity.dart';
 import 'package:scanx/features/analyse_image/domain/entities/analyse_result_entity.dart';
 import 'package:scanx/features/analyse_image/domain/entities/patient_entity.dart';
-import 'package:scanx/features/analyse_image/domain/entities/patient_image_entity.dart';
 import 'package:scanx/features/analyse_image/domain/usecases/get_patients_historic.dart';
 import 'package:scanx/features/analyse_image/domain/usecases/send_patient_image_to_analyse.dart';
 
@@ -17,7 +16,8 @@ class AnalyseImageProvider with ChangeNotifier {
 
   AnalyseImageProvider({required this.getHistoric, required this.sendImage});
 
-  void eitherFailureOrAnalyseResult({required PatientEntity patient}) async {
+  Future<void> eitherFailureOrAnalyseResult(
+      {required PatientEntity patient}) async {
     state = Loading();
     notifyListeners();
     // final image = await picker.pickImage(source: ImageSource.gallery);
@@ -30,9 +30,17 @@ class AnalyseImageProvider with ChangeNotifier {
       state = PatientResult(patientResult: analyseResult);
       notifyListeners();
     });
+
+    // state = PatientResult(
+    //     patientResult: AnalyseResultEntity(
+    //         patientName: 'patientName',
+    //         patientAffected: true,
+    //         npeumoniaType: 'viral',
+    //         id: 'id'));
+    // notifyListeners();
   }
 
-  void eitherFailureOrHistoricResults() async {
+  Future<void> eitherFailureOrHistoricResults() async {
     state = Loading();
     notifyListeners();
 

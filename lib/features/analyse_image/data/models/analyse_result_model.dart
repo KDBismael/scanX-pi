@@ -8,6 +8,7 @@ class AnalyseResultModel extends AnalyseResultEntity {
       required super.id});
 
   factory AnalyseResultModel.fromJsom(Map json) {
+    print(json);
     return AnalyseResultModel(
       npeumoniaType: json['npeumonia_type'],
       patientName: json['patient_name'],

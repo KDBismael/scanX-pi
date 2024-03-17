@@ -7,6 +7,7 @@ import 'package:scanx/core/presentation/provider/global_provider.dart';
 import 'package:scanx/features/analyse_image/domain/entities/patient_entity.dart';
 import 'package:scanx/features/analyse_image/presentation/provider/analyse_image_provider.dart';
 import 'package:scanx/features/analyse_image/presentation/screens/camera_preview_screen.dart';
+import 'package:scanx/features/analyse_image/presentation/widgets/analyse_result_card.dart';
 
 class PatientInputs extends StatefulWidget {
   const PatientInputs({super.key});
@@ -269,8 +270,8 @@ class _PatientInputsState extends State<PatientInputs> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  onPressed: () {
-                    context
+                  onPressed: () async {
+                    await context
                         .read<AnalyseImageProvider>()
                         .eitherFailureOrAnalyseResult(
                           patient: PatientEntity(
@@ -281,6 +282,71 @@ class _PatientInputsState extends State<PatientInputs> {
                             image: image!,
                           ),
                         );
+                    Navigator.of(context).pop();
+                    if (context.read<AnalyseImageProvider>().state is Loading) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return AlertDialog(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            title: const Text(
+                              "Resultat d'analyse",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            content: Container(
+                              child: const Text(
+                                'Loading..',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: Navigator.of(context).pop,
+                                child: const Text(
+                                  'Fermer',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                    if (context.read<AnalyseImageProvider>().state
+                        is PatientResult) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return AlertDialog(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            title: const Text(
+                              "Resultat d'analyse",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            content: Container(
+                              child: AnalyseResultCard(
+                                patientResult: (context
+                                        .read<AnalyseImageProvider>()
+                                        .state as PatientResult)
+                                    .patientResult,
+                                notshare: true,
+                              ),
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: Navigator.of(context).pop,
+                                child: const Text(
+                                  'Fermer',
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
                     // print();
                   },
                   child: const Text(

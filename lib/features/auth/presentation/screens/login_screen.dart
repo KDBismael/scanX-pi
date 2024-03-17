@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scanx/core/presentation/widgets/loading_dialog.dart';
 import 'package:scanx/features/auth/presentation/provider/auth_provider.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,6 +16,7 @@ class LoginScreenState extends State<LoginScreen> {
   static GlobalKey formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+  final GlobalKey<State> _loaderDialog = GlobalKey<State>();
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +79,7 @@ class LoginScreenState extends State<LoginScreen> {
                                 });
                               },
                               decoration: InputDecoration(
-                                hintText: "Numero de telephone",
+                                hintText: "Email",
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
                                       width: 1.0,
@@ -128,9 +130,14 @@ class LoginScreenState extends State<LoginScreen> {
                               height: screenSize.height * 0.03,
                             ),
                             ElevatedButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                LoaderDialog.showLoadingDialog(
+                                    await context, _loaderDialog);
                                 context.read<AuthProvider>().signInOrFailure(
-                                    context: context, "me@g.com", "string");
+                                    context: context, email, password);
+                                Navigator.of(_loaderDialog.currentContext!,
+                                        rootNavigator: true)
+                                    .pop();
                               },
                               style: ButtonStyle(
                                 shape: const MaterialStatePropertyAll(

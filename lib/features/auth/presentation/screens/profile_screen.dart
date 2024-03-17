@@ -2,6 +2,9 @@ import 'package:datepicker_dropdown/datepicker_dropdown.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:scanx/app.dart';
+import 'package:scanx/features/analyse_image/presentation/screens/home_screen.dart';
+import 'package:scanx/main.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -269,7 +272,15 @@ class ProfileScreen extends StatelessWidget {
                         SizedBox(height: screenSize.height * 0.057),
                         Center(
                           child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                storage.delete(key: 'token');
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        const MyApp(),
+                                  ),
+                                );
+                              },
                               style: OutlinedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(6)),

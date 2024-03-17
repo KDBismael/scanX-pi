@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoaderDialog {
   static Future<void> showLoadingDialog(
       BuildContext context, GlobalKey key) async {
-    var wid = MediaQuery.of(context).size.width / 2;
+    var size = MediaQuery.of(context).size;
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         return Padding(
-          padding: const EdgeInsets.only(left: 130, right: 130),
-          child: Dialog(
-              key: key,
-              backgroundColor: Colors.white,
-              child: Container(
-                width: 60.0,
-                height: 60.0,
-                child: Image.asset(
-                  'images/loaderOld.gif',
-                  height: 60,
-                  width: 60,
-                ),
-              )),
-        );
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: Center(
+              child: Lottie.asset('assets/Animation - 1710548049726.json',
+                  repeat: true, animate: true),
+            ));
       },
     );
   }
 }
+// child: Dialog(
+//             key: key,
+//             // backgroundColor: Colors.white,
+//             child: Container(
+//               // width: size.width,
+//               // height: size.height,
+//               child: Center(
+//                 child: Lottie.asset('assets/loader.json',
+//                     repeat: true, animate: true, fit: BoxFit.scaleDown),
+//               ),
+//             ),
+//           ),

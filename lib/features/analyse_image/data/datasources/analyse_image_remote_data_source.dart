@@ -18,21 +18,26 @@ class AnalyseImageRemoteDataSourceImpl implements AnalyseImageRemoteDataSource {
 
   @override
   Future<AnalyseHistoryModel> getPatientsHistoric() async {
-    final res =
-        await rootBundle.loadString("assets/patient_result.json", cache: true);
-    final patientsResult = json.decode(res);
-    return AnalyseHistoryModel.fromJsom(patientsResult);
+    // final res =
+    //     await rootBundle.loadString("assets/patient_result.json", cache: true);
+    // final patientsResult = json.decode(res);
+    final patientResult = await network.getAll("predictions/all");
+    print(patientResult);
+
+    return AnalyseHistoryModel.fromJsom(patientResult);
   }
 
   @override
   Future<AnalyseResultModel> sendPatientImageToAnalyse(
       PatientEntity patient) async {
-    final patientResult = await network.analyse("predictions/predict", patient);
     // final res =
     //     await rootBundle.loadString("assets/patient_result.json", cache: true);
+    final res = await network.analyse("predictions/predict", patient);
+    print('---');
+    print(res);
 
-    // final patientResult = json.decode(res)['patient_result'];
-
-    return AnalyseResultModel.fromJsom(patientResult);
+    // final patientResult = json.decode(res);
+    // print(patientResult);
+    return AnalyseResultModel.fromJsom(res);
   }
 }

@@ -22,6 +22,7 @@ class AnalyseImageRepositoryImpl implements AnalyseImageRepository {
       check internet conection and then send local or remote data but
       but for now just getting the mock data
     */
+    // final patientResult = await remoteDataSource.getPatientsHistoric();
     final patientsResult = await remoteDataSource.getPatientsHistoric();
     return Right(patientsResult);
   }

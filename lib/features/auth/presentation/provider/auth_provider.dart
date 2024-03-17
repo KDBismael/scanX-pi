@@ -13,7 +13,7 @@ class AuthProvider extends ChangeNotifier {
 
   AuthProvider({required this.signIn});
 
-  void signInOrFailure(String email, String password,
+  Future<void> signInOrFailure(String email, String password,
       {required BuildContext context}) async {
     state = LoadingState();
     notifyListeners();

@@ -191,7 +191,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       elevation: 0.2,
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       CustomBottomSheet().sheet(
                         context: context,
                         padding: EdgeInsets.all(screenSize.width * 0.08),
@@ -205,12 +205,13 @@ class HomeScreen extends StatelessWidget {
                                 itemCount: 10,
                                 itemBuilder: (context, index) {
                                   return const AnalyseResultCard(
+                                    notshare: false,
                                     isElevated: true,
                                     patientResult: AnalyseResultEntity(
                                         id: "1",
                                         npeumoniaType: "",
                                         patientAffected: false,
-                                        patientName: "Konan Jupiter"),
+                                        patientName: "Momo mimi"),
                                   );
                                 },
                               ),
@@ -218,7 +219,7 @@ class HomeScreen extends StatelessWidget {
                           ],
                         ),
                       );
-                      context
+                      await context
                           .read<AnalyseImageProvider>()
                           .eitherFailureOrHistoricResults();
                     },
